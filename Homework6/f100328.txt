@@ -1,0 +1,212 @@
+package com.company;
+
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
+public class Main {
+
+    public static void main(String[] args)
+    {
+        String text = "2Wire 192.168.1.1 192.168.0.1 192.168.1.254 10.0.0.138; " +
+                "3Com 192.168.1.1 192.168.10.1;" +
+                " Actiontec 192.168.1.1 192.168.0.1 192.168.2.1 192.168.254.254; Airlink 192.168.1.1 " +
+                "192.168.2.1; Airlive 192.168.2.1; Airties 192.168.2.1; Apple 10.0.1.1;";
+
+        StringBuilder sb = new StringBuilder();
+        Pattern pattern = Pattern.compile ("(\\d{1,3}\\.){3}\\d{1,3}");
+
+        Matcher matcher = pattern.matcher(text);
+
+        while(matcher.find()){
+            sb.append(matcher.group());
+            sb.append("<->");
+        }
+
+        System.out.println(sb);
+
+        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length()-1);
+        System.out.println(sb);
+
+    }
+}
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'numberOfOccurrences' function below.
+     *
+     * The function is expected to return an INTEGER.
+     * The function accepts following parameters:
+     *  1. STRING text
+     *  2. STRING target
+     */
+
+    public static int numberOfOccurrences(String text, String target) {
+
+
+ 
+    int count = ( text.split(target, -1).length ) - 1;
+ 
+
+        return count;
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String text = bufferedReader.readLine();
+
+        String target = bufferedReader.readLine();
+
+        int result = Result.numberOfOccurrences(text, target);
+
+        bufferedWriter.write(String.valueOf(result));
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'firstWords' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING postText as parameter.
+     */
+
+    public static String firstWords(String text) {
+        
+        StringBuilder sb = new StringBuilder();
+        StringBuilder sb1 = new StringBuilder();
+        Pattern pattern = Pattern.compile("(?:^|(?:[.!?]\\s))(?:\\w|['-]\\w)+");
+        Matcher matcher = pattern.matcher(text.toString());
+        while(matcher.find()){
+
+           sb.append(matcher.group());
+        }
+
+        for(int i = 0; i < sb.length(); i++){
+            if(sb.charAt(i) == ' '){
+                i++;
+            }
+            if(sb.charAt(i) != '.' && sb.charAt(i) != '?' && sb.charAt(i) != '!'){
+                sb1.append(sb.toString().toUpperCase().charAt(i));
+            }
+            else{
+                sb1.append('_');
+            }
+        }
+        return sb1.toString();
+    
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String postText = bufferedReader.readLine();
+
+        String result = Result.firstWords(postText);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+import java.io.*;
+import java.math.*;
+import java.security.*;
+import java.text.*;
+import java.util.*;
+import java.util.concurrent.*;
+import java.util.function.*;
+import java.util.regex.*;
+import java.util.stream.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.toList;
+
+class Result {
+
+    /*
+     * Complete the 'ipAddresses' function below.
+     *
+     * The function is expected to return a STRING.
+     * The function accepts STRING ipAddressesInfo as parameter.
+     */
+
+    public static String ipAddresses(String ipAddressesInfo) {
+         StringBuilder sb = new StringBuilder();
+        Pattern pattern = Pattern.compile ("(\\d{1,3}\\.){3}\\d{1,3}");
+
+        Matcher matcher = pattern.matcher(ipAddressesInfo);
+
+        while(matcher.find()){
+            sb.append(matcher.group());
+            sb.append("<->");
+        }
+
+        System.out.println(sb);
+
+        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length()-1);
+        sb.deleteCharAt(sb.length()-1);
+        return sb.toString();
+    }
+
+}
+
+public class Solution {
+    public static void main(String[] args) throws IOException {
+        BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(System.in));
+        BufferedWriter bufferedWriter = new BufferedWriter(new FileWriter(System.getenv("OUTPUT_PATH")));
+
+        String ipAddressesInfo = bufferedReader.readLine();
+
+        String result = Result.ipAddresses(ipAddressesInfo);
+
+        bufferedWriter.write(result);
+        bufferedWriter.newLine();
+
+        bufferedReader.close();
+        bufferedWriter.close();
+    }
+}
+
+
